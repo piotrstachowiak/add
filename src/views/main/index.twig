@@ -1,0 +1,23 @@
+{% extends 'base.twig' %}
+
+{% block title 'ADD++' %}
+{% block content %}
+    <h1>
+        ADD++
+    </h1>
+    <a href="{{ url('ads_index') }}" title="View ads"> 
+        {{'Ads'|trans}} 
+    </a>
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <a href="{{ url('profile_index') }}" title="Profile">
+            {{'Profile'|trans}}
+        </a>
+    {% else %}
+        <a href="{{ url('main_register') }}" title="Register">
+            {{'Register'|trans}} 
+        </a>
+    {% endif %}
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ url('users_index') }}" title="Users"> {{'Users'|trans}} </a>
+    {% endif %}
+{% endblock %}

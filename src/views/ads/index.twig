@@ -1,0 +1,39 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+    <h1>
+        Ads
+    </h1>
+    {% for flashMessage in app.session.getFlashBag.get('message') %}
+        <div class="alert alert-{{ flashMessage.type }}" role="alert">
+            {{ flashMessage.content }}
+        </div>
+    {% endfor %}
+    <ul>
+        {% for row in ads %}
+            <li>
+                <a href="{{ url('ads_view', {'id': row.id}) }}" title="View ad">
+                    {{row.title|upper}}
+                </a>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ url('ads_edit', {'id': row.id}) }}"> 
+                        {{ 'Edit ad'|trans }} 
+                    </a>
+                    <a id="delete_ad" href="{{ url('ads_delete', {'id': row.id}) }}"> 
+                        {{ 'Delete ad'|trans }} 
+                    </a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <p>
+            <a href="{{ url('ads_add') }}" title="Add ad"> 
+                {{'Add ad'|trans}} 
+            </a>
+        </p>
+    {% endif %}
+    <a href="{{ url('main_index') }}" title="Return">
+        {{ 'Return'|trans }}
+    </a>
+{% endblock %}

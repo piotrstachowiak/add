@@ -1,0 +1,16 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+    <ul>
+        {% for row in ads %}
+            <li>
+                <a href="{{ url('ads_view', {'id': row.id}) }}" title="View ad">
+                    {{row.title|upper}}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url('profile_index') }}" title="Return">
+        {{'Return'|trans}}
+    </a>
+{% endblock %}

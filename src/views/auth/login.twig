@@ -1,0 +1,24 @@
+{% extends 'base.twig' %}
+
+{% block title %}
+    {{ 'Log in'|trans }}
+{% endblock %}
+
+{% block nav %}{% endblock %}
+
+{% block content %}
+    <h1>
+        {{ 'Log in'|trans }}
+    </h1>
+    {{ error }}
+    <form action="{{ path('auth_login_check') }}" method="post">
+        {{ form_widget(form) }}
+        <input type="submit" name="submit" value="{{ 'Login'|trans }}" />
+    </form>
+    <a href="{{ url('main_index') }}"> 
+        {{ 'Homepage'|trans }} 
+    </a>
+    <a href="{{ url('main_register') }}"> 
+        {{ 'Register'|trans }} 
+    </a>
+{% endblock %}

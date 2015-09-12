@@ -1,0 +1,10 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+    {{ads.title|upper}}
+    {{ads.text}}
+    {{category.name}}
+    <a href="{{ url('ads_index') }}"> 
+        {{ 'Return'|trans }} 
+    </a> 
+{% endblock %}

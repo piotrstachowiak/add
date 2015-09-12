@@ -1,0 +1,14 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+    <h1>Hello {{login}}!</h1>
+    <a href="{{ url('profile_ads') }}" title="View your ads">
+        {{'View your ads'|trans}}
+    </a>
+    <a href="{{ url('profile_edit') }}" title="Edit profile">
+        {{'Edit profile'|trans}}
+    </a>
+    <a href="{{ url('main_index') }}" title="Return">
+        {{'Return'|trans}}
+    </a>
+{% endblock %}
